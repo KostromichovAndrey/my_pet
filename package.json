@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "git add . && git commit -m 'ready for deploy' && git push origin main"
+    "deploy": "git push origin main"
   },
   "dependencies": {
     "vue": "^3.2.47",
