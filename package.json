@@ -9,6 +9,7 @@
     "deploy": "npm run build && git add dist && git commit -m 'deploy' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
+    "sass": "^1.62.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
