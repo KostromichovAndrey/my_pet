@@ -15,17 +15,17 @@ const headerRouts = [
   {
     id: 3,
     name: "Third page",
-    path: "/3",
+    path: "/third-page",
   },
   {
     id: 4,
     name: "Forth page",
-    path: "/4",
+    path: "/forth-page",
   },
   {
     id: 5,
-    name: "404",
-    path: "/404",
+    name: "Romario page",
+    path: "/romario",
   },
 ]
 </script>
