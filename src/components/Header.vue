@@ -22,11 +22,11 @@ const headerRouts = [
     name: "Forth page",
     path: "/forth-page",
   },
-  {
-    id: 5,
-    name: "Romario page",
-    path: "/romario",
-  },
+  // {
+  //   id: 5,
+  //   name: "Romario page",
+  //   path: "/romario",
+  // },
 ]
 </script>
 
