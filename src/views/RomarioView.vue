@@ -1,7 +1,4 @@
 <script setup>
-
-
-
 // import { onMounted, ref } from 'vue';
 // import Card from '../components/Card.vue';
 
@@ -20,19 +17,29 @@
 // onMounted(() => {
 //   fetchData();
 // })
+const task = "";
+// const tusks = [];
+
+// addTusk() {
+//   this.tusks.push(this.addTusk)
+// };
+
 </script>
 
 <template>
   <div>
     <div class="header">
       <h1>To do list</h1>
-      <input type="text">
-      <button>Add task</button>
+      <input v-model="tusk" type="text" placeholder="New tusk">
+      <button @click="addTusk">Add task</button>
     </div>
     <div class="body">
-      <input type="checkbox">
-      <span>Task 1</span>
-      <button>Remove</button>
+      <ul>
+        <li>
+          <span>{{ tusk }}</span>
+          <input type="checkbox">
+        </li>
+      </ul>
     </div>
 
   </div>
