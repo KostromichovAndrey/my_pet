@@ -1,28 +1,41 @@
 <script setup>
-// import { onMounted, ref } from 'vue';
-// import Card from '../components/Card.vue';
+import { onMounted, ref } from 'vue';
 
-// const cardList = ref([])
+const taskName = ref("");
+const tasks = ref([]);
 
-// const fetchData = async () => {
-//   fetch('https://jsonplaceholder.typicode.com/photos?_page=2&_limit=12')
-//   .then(response => response.json())
-//   .then(products => {
+function addTask() {
+  // console.log(taskName.value, "taskName.value");
+  if (taskName.value === "") {
+    return console.error("task name is empty");
+  } 
 
-//     console.log(products, 'products')
-//     cardList.value = products;
-//   })
-// }
+  const newTask = {
+    id: Date.now(),
+    name: taskName.value,
+    status: false,
+  };
+  // console.log(newTask, "newTask");
 
-// onMounted(() => {
-//   fetchData();
-// })
-const task = "";
-// const tusks = [];
+  tasks.value.push(newTask);
+  console.log(tasks.value, "tasks.value");
 
-// addTusk() {
-//   this.tusks.push(this.addTusk)
-// };
+  taskName.value = "";
+};
+
+function toggleTask(task) {
+  // console.log(task, "task");
+
+  const selectedTask = tasks.value.find((el) => el.id === task.id) 
+  // console.log(selectedTask, "selectedTask");
+
+  selectedTask.status = !selectedTask.status
+}
+
+function deleteTask(taskForDel) {
+  console.log(taskForDel, "taskForDel - del");
+  tasks.value = tasks.value.filter((el) => el.id !== taskForDel.id)
+}
 
 </script>
 
@@ -30,14 +43,17 @@ const task = "";
   <div>
     <div class="header">
       <h1>To do list</h1>
-      <input v-model="tusk" type="text" placeholder="New tusk">
-      <button @click="addTusk">Add task</button>
+      <input v-model="taskName" type="text" placeholder="New taskName" @keyup.enter="addTask">
+      <button @click="addTask">Add task</button>
     </div>
+
     <div class="body">
       <ul>
-        <li>
-          <span>{{ tusk }}</span>
-          <input type="checkbox">
+        <li v-for="(item, index) in tasks" :key="item.id" :class="{ completed: item.status }">
+          <span>{{ index + 1 }}: </span>
+          <span>{{ item.name }}</span>
+          <input type="checkbox" :checked="item.status" @click.stop="toggleTask(item)">
+          <button @click.stop="deleteTask(item)">Delete</button>
         </li>
       </ul>
     </div>
@@ -46,5 +62,8 @@ const task = "";
 </template>
 
 <style lang="scss">
-
+  .completed {
+    background-color: rgb(87, 116, 87);
+    text-decoration: line-through;
+  }
 </style>
